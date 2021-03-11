@@ -35,6 +35,7 @@ app.use(fileupload());
 
 //app.get('/', (req, res) => res.render('pages/index'));
 app.get('/', getHomePage);
+app.get('/', )
 
 
 app.listen(port, () => {
