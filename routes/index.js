@@ -11,16 +11,16 @@ module.exports = {
         }).catch(function (error) {
             console.error(error);
         });*/
-        var value;
+        var amount;
         var ref = database.ref("nowsnack/s0").on('value',function(snapshot){
-            value = snapshot.val().price;
+            amount = snapshot.val().amount;
         });
         //key = varr.child("amount");
 
         res.render('pages/index2.ejs', {
             title: "Welcome to snack vending",
             value1: ref,
-            value2: value
+            value2: amount
         });
         //res.redirect('/');
     }
