@@ -11,9 +11,9 @@ module.exports = {
         }).catch(function (error) {
             console.error(error);
         });*/
-        var value;
+        var amount;
         var ref = database.ref("nowsnack/s0").on('value',function(snapshot){
-            value = snapshot.val().price;
+            amount = snapshot.val().amount;
         });
         //key = varr.child("amount");
 
