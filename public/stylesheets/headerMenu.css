@@ -1,0 +1,41 @@
+.nav-menu ul
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    justify-content: center;
+}
+
+.nav-menu
+{
+    align-items: center;
+    margin-top: 20px;
+}
+
+.menubtn
+{ 
+    font-weight: 800;
+    /* color: #b7bcb6  ; */
+    color: black;
+    font-size: 25px;
+    /* -webkit-text-stroke-width: 1px; */
+    /* -webkit-text-stroke-color: white; */
+}
+
+.menubtn:hover
+{
+    color: #fed797;
+    background: #ee496a;
+}
+
+.headerBar
+{
+    height: 100px;
+}
+
+.headerBar h1
+{
+    font-weight: 400;
+    margin-top: 20px;
+}

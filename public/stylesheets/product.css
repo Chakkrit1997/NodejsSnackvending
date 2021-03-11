@@ -1,0 +1,48 @@
+  .middle
+{
+    margin: 0 auto;
+}
+
+.Box
+{
+    width: 150px;
+    height: 150px;
+    /* border: 0.5px solid rgb(233, 233, 233); */
+}
+
+.Box img
+{
+    width: 150px;
+    height: 150px;
+}
+
+.minusPlus
+{
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+    font-size: 20   px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+
+.minusPlus:hover
+{
+    background: #ff008b;
+    color: #fff;
+}
+
+.center
+{
+    width: 150px;
+    margin: 40px auto;
+}
