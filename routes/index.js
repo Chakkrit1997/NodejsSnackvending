@@ -20,7 +20,7 @@ module.exports = {
         res.render('pages/index2.ejs', {
             title: "Welcome to snack vending",
             value1: ref,
-            value2: value
+            value2: amount
         });
         //res.redirect('/');
     }
