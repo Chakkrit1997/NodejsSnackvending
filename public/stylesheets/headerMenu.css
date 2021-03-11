@@ -45,3 +45,8 @@
     /* height: 100px; */
     width: 350px;
 }
+
+.container-fluid hr
+{
+    border-top: 2px solid gray;
+}
