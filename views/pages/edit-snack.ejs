@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+    <%- include ("../partials/nav.ejs") %>
+
+    <div class="container">
+        <div class="row mt-5">
+            
+            <div class="col-2">
+                <img class="img-fluid img-edit" src="assets/img/snack/Lay Miengkam.png" alt="">
+            </div>
+            
+            <!-- <div class="col-2"> -->
+                <div class="form-detail text-left">
+                    <label class="product-detail_2" for="Name">เลย์รสเมี่ยงคำครบรส</label> <br> 
+                                     
+                    <label class="product-detail_2" for="Price">ราคา 5 บาท</label> <br>
+                    จำนวนคงเหลือ ชิ้น <br>
+                    <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i class='fas fa-save'></i></button>
+                </div>
+            <!-- </div> -->
+
+            <div class="col-3">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo1">แก้ไขข้อมูล</button>
+                <div id="demo1" class="collapse">
+                    <div class="mt-1 p-1" style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
+                        
+                        <label for="">ชื่อ:</label>
+                        <input style="width: 150px;" type="text" id="fname" name="fname" placeholder="ขนม"><br>
+                        
+                        <label for="">ราคา:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
+
+                        <label for="">จำนวน:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="5"> ชิ้น <br>
+
+                        <button style='margin-top: 5px; font-size:14px; color:red'> บันทึก <i class='fas fa-save'></i></button>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="col-2">
+                <img class="img-fluid img-edit" src="assets/img/snack/Chicken Grill.png" alt="">
+            </div>
+            
+            <!-- <div class="col-2"> -->
+                <div class="form-detail text-left">
+                    <label class="product-detail_2" for="Name">ไก่ย่าง</label> <br> 
+                                     
+                    <label class="product-detail_2" for="Price">ราคา 5 บาท</label> <br>
+                    จำนวนคงเหลือ ชิ้น <br>
+                    <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i class='fas fa-save'></i></button>
+                </div>
+            <!-- </div> -->
+
+            <div class="sm-col-3">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">แก้ไขข้อมูล</button>
+                <div id="demo" class="collapse">
+                    <div class="mt-1 p-1" style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
+                        
+                        <label for="">ชื่อ:</label>
+                        <input style="width: 150px;" type="text" id="fname" name="fname" placeholder="ขนม"><br>
+                        
+                        <label for="">ราคา:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
+
+                        <label for="">จำนวน:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="5"> ชิ้น <br>
+
+                        <button style='margin-top: 5px; font-size:14px; color:red'> บันทึก <i class='fas fa-save'></i></button>
+                    </div>                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

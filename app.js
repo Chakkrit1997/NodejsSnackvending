@@ -7,6 +7,7 @@ const app = express();
 const firebase = require('firebase');
 
 const { getHomePage } = require('./routes/index');
+const { editProducts } = require('./routes/edit-products');
 
 //const PORT = process.env.PORT || 5000
 const port = 5000;
@@ -35,7 +36,7 @@ app.use(fileupload());
 
 //app.get('/', (req, res) => res.render('pages/index'));
 app.get('/', getHomePage);
-app.get('/', )
+app.get('/edit', editProducts);
 
 
 app.listen(port, () => {
