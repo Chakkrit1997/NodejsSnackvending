@@ -15,11 +15,10 @@ module.exports = {
             obj = dataSnapshot.val();
             res.render('pages/index2.ejs', {
                 title: "Welcome to snack vending",
-                value1: obj.s1.amount,
+                value: obj,
             });
 
         })
-        console.log(snackobj);
         //res.redirect('/');
     }
 }
