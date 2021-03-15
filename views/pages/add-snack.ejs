@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <%- include ("../partials/header.ejs") %>
 </head>
@@ -8,19 +9,51 @@
 
   <%- include ("../partials/nav.ejs") %>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/lang-logo.png">
-    </a>
-    <h1> test sback</h1>
-    <p>สวัสดี.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> ทดสอบlink1</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> ทดสอบlink2</a>
-  </div>
-</div>
+    <div class="container">
+      <% if (message !='' ){ %>
+        <p class="text-center text-danger">
+          <% message %>
+        </p>
+        <% } %>
+          <form action="" class="add-player-form" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="form-group clo-md-4">
+                <input type="text" class="form-control" name="snack_name" id="snack_name" placeholder="ชื่อขนม" required>
+              </div>
+              <div class="form-group clo-md-4">
+                <input type="text" class="form-control" name="snack_price" id="snack_price" placeholder="ราคาขนม" required>
+              </div>
+              <div class="form-group clo-md-4">
+                <input type="text" class="form-control" name="snack_amount" id="snack_amount" placeholder="จำนวนขนม" required>
+              </div>
+              
+            </div>
+          </form>
+
+
+
+    </div>
+
+
+
+
+    <div class="jumbotron text-center">
+      <div class="container">
+        <a href="/" class="lang-logo">
+          <img src="/lang-logo.png">
+        </a>
+        <h1> test sback</h1>
+        <p>สวัสดี.</p>
+        <a type="button" class="btn btn-lg btn-default"
+          href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span
+            class="glyphicon glyphicon-flash"></span> ทดสอบlink1</a>
+        <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span
+            class="glyphicon glyphicon-download"></span> ทดสอบlink2</a>
+      </div>
+    </div>
 
 
 
 </body>
+
 </html>
