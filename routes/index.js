@@ -11,17 +11,15 @@ module.exports = {
         }).catch(function (error) {
             console.error(error);
         });*/
-        var amount;
-        var ref = database.ref("nowsnack/s0").on('value',function(snapshot){
-            amount = snapshot.val().amount;
-        });
-        //key = varr.child("amount");
+        var snackobj = database.ref("nowsnack").once('value').then(function (dataSnapshot) {
+            obj = dataSnapshot.val();
+            res.render('pages/index2.ejs', {
+                title: "Welcome to snack vending",
+                value1: obj.s1.amount,
+            });
 
-        res.render('pages/index2.ejs', {
-            title: "Welcome to snack vending",
-            value1: ref,
-            value2: amount
-        });
+        })
+        console.log(snackobj);
         //res.redirect('/');
     }
 }
