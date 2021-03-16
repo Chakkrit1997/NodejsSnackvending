@@ -13,7 +13,7 @@ module.exports = {
         });*/
         var snackobj = database.ref("nowsnack").once('value').then(function (dataSnapshot) {
             obj = dataSnapshot.val();
-            console.log(obj)
+            //console.log(obj)
             res.render('pages/index2.ejs', {
                 title: "Welcome to snack vending",
                 value: obj,

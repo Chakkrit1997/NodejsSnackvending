@@ -11,239 +11,242 @@
         <div class="top">
             <!--  -->
         </div>
-        <% for(var i=0;i<20;i++){ %>
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <div class="Box middle">
-                        <img class="img-fluid" src="assets/img/snack/Lay Miengkam.png" alt="">
+        <% for (let key in value) { %>
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src=value[key].name alt="">
+                        </div>
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value[key].name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value[key].amount %> ชิ้น
+                        </div>
                     </div>
-                    <div class="form-detail text-center">
-                        <label class="product-detail" for="Name">
-                            <%= value.s0.name %>
-                        </label> <br>
-                        <label class="product-detail_2" for="Price">ราคา <%= value.s0.price %> บาท</label> <br>
-                        จำนวนคงเหลือ <%= value.s0.amount %> ชิ้น
+                </div>
+            </div>
+            <% } %>
+
+            <% /*var str_value = JSON.stringify(value);
+            console.log(str_value)*/ %> 
+
+                <!-- Row1's Products -->
+                <div class="row mt-5">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Lay Miengkam.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Chicken Grill.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Tawan.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Hanami.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Potae.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-1">
+
                     </div>
                 </div>
-            </div>
-        </div>
-        <% } %>
 
-        <!-- Row1's Products -->
-        <div class="row mt-5">
-            <div class="col-1">
-            </div>
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Lay Miengkam.png" alt="">
-                </div>
-            </div>
+                <!-- Buttons minus and plus in input -->
+                <div class="row mt-5">
+                    <div class="col-1">
+                    </div>
 
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Chicken Grill.png" alt="">
-                </div>
-            </div>
+                    <div class="col-2">
 
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Tawan.png" alt="">
-                </div>
-            </div>
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s0.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s0.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s0.amount %> ชิ้น
+                        </div>
 
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Hanami.png" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Potae.png" alt="">
-                </div>
-            </div>
-            <div class="col-1">
+                    </div>
 
-            </div>
-        </div>
+                    <div class="col-2">
 
-        <!-- Buttons minus and plus in input -->
-        <div class="row mt-5">
-            <div class="col-1">
-            </div>
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s1.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s1.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น
+                        </div>
 
-            <div class="col-2">
+                    </div>
 
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s0.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s0.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s0.amount %> ชิ้น
-                </div>
+                    <div class="col-2">
 
-            </div>
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s2.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s2.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s2.amount %> ชิ้น
+                        </div>
 
-            <div class="col-2">
+                    </div>
 
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s1.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s1.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น
-                </div>
+                    <div class="col-2">
 
-            </div>
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s3.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s3.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s3.amount %> ชิ้น
+                        </div>
 
-            <div class="col-2">
+                    </div>
 
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s2.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s2.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s2.amount %> ชิ้น
+                    <div class="col-2">
+
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s4.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s4.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s4.amount %> ชิ้น
+                        </div>
+
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
                 </div>
 
-            </div>
+                </div>
+                <!-- Row2's Products -->
+                <div class="row mt-5">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Roller Coaster.png" alt="">
+                        </div>
+                    </div>
 
-            <div class="col-2">
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Sun Bits.png" Sun Bits alt="">
+                        </div>
+                    </div>
 
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s3.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s3.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s3.amount %> ชิ้น
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Twisco.png" Sun Bits alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Cornae.png" Sun Bits alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="Box middle">
+                            <img class="img-fluid" src="assets/img/snack/Party.png" Sun Bits alt="">
+                        </div>
+                    </div>
+                    <div class="col-1">
+
+                    </div>
                 </div>
 
-            </div>
+                <!-- Buttons minus and plus in input -->
+                <div class="row mt-5">
+                    <div class="col-1">
+                    </div>
 
-            <div class="col-2">
+                    <div class="col-2">
 
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s4.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s4.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s4.amount %> ชิ้น
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s5.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s5.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s5.amount %> ชิ้น
+                        </div>
+
+                    </div>
+
+                    <div class="col-2">
+
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s6.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s6.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s6.amount %> ชิ้น
+                        </div>
+
+                    </div>
+
+                    <div class="col-2">
+
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s7.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s7.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s7.amount %> ชิ้น
+                        </div>
+
+                    </div>
+
+                    <div class="col-2">
+
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s8.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s8.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s8.amount %> ชิ้น
+                        </div>
+
+                    </div>
+
+                    <div class="col-2">
+
+                        <div class="form-detail text-center">
+                            <label class="product-detail" for="Name">
+                                <%= value.s9.name %>
+                            </label> <br>
+                            <label class="product-detail_2" for="Price">ราคา <%= value.s9.price %> บาท</label> <br>
+                            จำนวนคงเหลือ <%= value.s9.amount %> ชิ้น
+                        </div>
+
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
                 </div>
-
-            </div>
-
-            <div class="col-1">
-
-            </div>
-        </div>
-
-        </div>
-        <!-- Row2's Products -->
-        <div class="row mt-5">
-            <div class="col-1">
-            </div>
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Roller Coaster.png" alt="">
-                </div>
-            </div>
-
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Sun Bits.png" Sun Bits alt="">
-                </div>
-            </div>
-
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Twisco.png" Sun Bits alt="">
-                </div>
-            </div>
-
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Cornae.png" Sun Bits alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="Box middle">
-                    <img class="img-fluid" src="assets/img/snack/Party.png" Sun Bits alt="">
-                </div>
-            </div>
-            <div class="col-1">
-
-            </div>
-        </div>
-
-        <!-- Buttons minus and plus in input -->
-        <div class="row mt-5">
-            <div class="col-1">
-            </div>
-
-            <div class="col-2">
-
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s5.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s5.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s5.amount %> ชิ้น
-                </div>
-
-            </div>
-
-            <div class="col-2">
-
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s6.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s6.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s6.amount %> ชิ้น
-                </div>
-
-            </div>
-
-            <div class="col-2">
-
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s7.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s7.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s7.amount %> ชิ้น
-                </div>
-
-            </div>
-
-            <div class="col-2">
-
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s8.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s8.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s8.amount %> ชิ้น
-                </div>
-
-            </div>
-
-            <div class="col-2">
-
-                <div class="form-detail text-center">
-                    <label class="product-detail" for="Name">
-                        <%= value.s9.name %>
-                    </label> <br>
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s9.price %> บาท</label> <br>
-                    จำนวนคงเหลือ <%= value.s9.amount %> ชิ้น
-                </div>
-
-            </div>
-
-            <div class="col-1">
-
-            </div>
-        </div>
 
 
 
