@@ -3,3 +3,14 @@
     font-weight: 900;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.sum-head
+{
+    color: gray;
+}
+
+.sum-data
+{
+    font-size: 25px;
+    font-weight: 600;
+}
