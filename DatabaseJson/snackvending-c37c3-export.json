@@ -1,0 +1,55 @@
+{
+  "nowbuy" : {
+    "s1" : {
+      "amount" : 1,
+      "cost" : 5
+    },
+    "total_buy" : 5
+  },
+  "nowsnack" : {
+    "s0" : {
+      "amount" : 9,
+      "name" : "สเน็คแจ็ค",
+      "price" : 20
+    },
+    "s1" : {
+      "amount" : 1,
+      "name" : "ไก่ย่าง",
+      "price" : 5
+    },
+    "s2" : {
+      "amount" : 2,
+      "name" : "ตะวัน",
+      "price" : 10
+    },
+    "s3" : {
+      "amount" : 3,
+      "name" : "ฮานามิ",
+      "price" : 15
+    },
+    "s4" : {
+      "amount" : 4,
+      "price" : 20
+    },
+    "s5" : {
+      "amount" : 5,
+      "price" : 25
+    },
+    "s6" : {
+      "amount" : 6,
+      "price" : 30
+    },
+    "s7" : {
+      "amount" : 6,
+      "price" : 35
+    },
+    "s8" : {
+      "amount" : 8,
+      "price" : 40
+    },
+    "s9" : {
+      "amount" : 9,
+      "price" : 45
+    }
+  }
+}
