@@ -49,7 +49,17 @@
                                 </label> <br>
                                 <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
                                 <br>
-                                จำนวนคงเหลือ <%= value[key].amount %> ชิ้น
+                                
+                                <% if ( value[key].amount == 0 ) { %>
+                                    <p style="color: red;">
+                                        จำนวนคงเหลือ <%= value[key].amount %> ชิ้น!
+                                    </p> 
+                                    <% } else { %>
+                                        <p style="color: black;">
+                                            จำนวนคงเหลือ <%= value[key].amount %> ชิ้น
+                                        </p>
+                                        <% } %> 
+                                
                             </div>
 
                         </div>
@@ -101,7 +111,15 @@
                                     </label> <br>
                                     <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
                                     <br>
-                                    จำนวนคงเหลือ <%= value[key].amount %> ชิ้น
+                                    <% if ( value[key].amount == 0 ) { %>
+                                        <p style="color: red;">
+                                            จำนวนคงเหลือ <%= value[key].amount %> ชิ้น!
+                                        </p> 
+                                        <% } else { %>
+                                            <p style="color: black; ">
+                                                จำนวนคงเหลือ <%= value[key].amount %> ชิ้น
+                                            </p>
+                                            <% } %>
                                 </div>
 
                             </div>
