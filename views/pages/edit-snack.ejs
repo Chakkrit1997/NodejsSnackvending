@@ -28,7 +28,7 @@
                                 <br>
                                 จำนวนคงเหลือ <%= value[key].amount %> ชิ้น <br>
                                     <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i
-                                            class='fas fa-save'></i></button>
+                                            class='fas fa-edit'></i></button>
                             </div>
 
                             <div class="col">
@@ -40,15 +40,16 @@
 
                                         <label for="">ชื่อ:</label>
                                         <input style="width: 150px;" type="text" id="fname" name="fname"
-                                            placeholder="ขนม"><br>
+                                            placeholder="ชื่อขนม" value="<%= value[key].name %>">
+                                            <br>
 
                                         <label for="">ราคา:</label>
-                                        <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
+                                        <input type="number" id="price" name="price" min="1" max="50" value="<%= value[key].price %>"> บาท <br>
 
                                         <label for="">จำนวน:</label>
-                                        <input type="number" id="quantity" name="quantity" min="1" max="5"> ชิ้น <br>
+                                        <input type="number" id="quantity" name="quantity" min="0" max="9" value="<%= value[key].amount %>"> ชิ้น <br>
 
-                                        <button style='margin-top: 5px; font-size:14px; color:red'> บันทึก <i
+                                        <button style='margin-top: 5px; font-size:14px; color:red' > บันทึก <i
                                                 class='fas fa-save'></i></button>
                                     </div>
                                 </div>
