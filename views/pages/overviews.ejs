@@ -18,17 +18,7 @@
         data.addColumn('number', 'วัน');
         <% for ( let key in value ) { %>
             data.addColumn('number', '<%= value[key].name %>' );
-            <% } %>
-        // data.addColumn('number', '<%= value.s0.name %>');
-        // data.addColumn('number', '<%= value.s1.name %>');  
-        // data.addColumn('number', '<%= value.s2.name %>');  
-        // data.addColumn('number', '<%= value.s3.name %>');  
-        // data.addColumn('number', '<%= value.s4.name %>');    
-        // data.addColumn('number', '<%= value.s5.name %>');  
-        // data.addColumn('number', '<%= value.s6.name %>');  
-        // data.addColumn('number', '<%= value.s7.name %>');  
-        // data.addColumn('number', '<%= value.s8.name %>');  
-        // data.addColumn('number', '<%= value.s9.name %>');  
+            <% } %> 
 
         data.addRows([
             [1,  37.8, 80.8, 41.8, 45, 12, 32.4,  37.8, 80.8, 41.8, 45 ],
@@ -80,7 +70,7 @@
           ]);
   
           var options = {
-            title: 'My Daily Activities'
+            title: 'Percent of snacks sold'
           };
   
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
