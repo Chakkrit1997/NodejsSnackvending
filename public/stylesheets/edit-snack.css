@@ -2,3 +2,40 @@
 {
     width: 150px;
 }
+
+
+.image-preview
+{
+    width: 150px;
+    height: 200px;
+    border: 2px solid #dddddd;
+    margin-top: 15px;
+
+    /* Default Text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.image-preview1
+{
+    width: 150px;
+    height: 200px;
+    border: 2px solid #dddddd;
+    margin-top: 15px;
+
+    /* Default Text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.image-preview__image
+{
+    display: none;
+    width: 100%;
+}

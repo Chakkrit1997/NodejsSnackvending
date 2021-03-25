@@ -77,6 +77,145 @@
 
         <br><br><br>
 
+        <div class="container">
+
+            <h1>Image Preview on File Upload</h1>
+            <div class="row">
+
+                <div class="col">
+
+                    <div class="image-preview" id="imagePreview">
+                        <img src="" alt="Image Preview" class="image-preview__image">
+                        <span class="image-preview__default-text">image Preview</span>
+                    </div>
+
+                </div>
+
+                <div class="form-detail text-left" style="width: 120px;">
+
+                    <label class="product-detail_2" for="Name">
+                        <%= value.s1.name %>
+                    </label> <br>
+
+                    <label class="product-detail_2" for="Price">ราคา <%= value.s1.price %> บาท</label>
+                    <br>
+                    จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น <br>
+                        <button style='margin-top: 10px; font-size:14px; color:gray'
+                            onclick="document.getElementById('inpFile').click(); return false;"> แก้ไขรูป <i
+                                class='fas fa-edit'></i></button>
+                        <input type="file" name="inpFile" id="inpFile" style="display: none;">
+
+                </div>
+
+                <div class="col">
+                    <button type="button" class="btn btn-info" data-toggle="collapse"
+                        data-target="#demo33 ">แก้ไขข้อมูล</button>
+                    <div id="demo33" class="collapse">
+                        <div class="mt-1 p-1"
+                            style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
+
+                            <label for="">ชื่อ:</label>
+                            <input style="width: 150px;" type="text" id="fname" name="fname"
+                                placeholder="ขนม"><br>
+
+                            <label for="">ราคา:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
+
+                            <label for="">จำนวน:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="5"> ชิ้น
+                            <br>
+
+                            <button style='margin-top: 5px; font-size:14px; color:red'> บันทึก <i
+                                    class='fas fa-save'></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+
+                    <div class="image-preview1" id="imagePreview1">
+                        <img src="" alt="Image Preview" class="image-preview__image">
+                        <span class="image-preview__default-text">image Preview</span>
+                    </div>
+
+                </div>
+
+                <div class="form-detail text-left" style="width: 120px;">
+
+                    <label class="product-detail_2" for="Name">
+                        <%= value.s1.name %>
+                    </label> <br>
+
+                    <label class="product-detail_2" for="Price">ราคา <%= value.s1.price %> บาท</label>
+                    <br>
+                    จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น <br>
+                        <button style='margin-top: 10px; font-size:14px; color:gray'
+                            onclick="document.getElementById('inpFile1').click(); return false;"> แก้ไขรูป <i
+                                class='fas fa-edit'></i></button>
+                        <input type="file" name="inpFile1" id="inpFile1" style="display: none;">
+
+                </div>
+
+                <div class="col">
+                    <button type="button" class="btn btn-info" data-toggle="collapse"
+                        data-target="#demo33 ">แก้ไขข้อมูล</button>
+                    <div id="demo33" class="collapse">
+                        <div class="mt-1 p-1"
+                            style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
+
+                            <label for="">ชื่อ:</label>
+                            <input style="width: 150px;" type="text" id="fname" name="fname"
+                                placeholder="ขนม"><br>
+
+                            <label for="">ราคา:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
+
+                            <label for="">จำนวน:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="5"> ชิ้น
+                            <br>
+
+                            <button style='margin-top: 5px; font-size:14px; color:red'> บันทึก <i
+                                    class='fas fa-save'></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+
+            <script>
+                const inpFile = document.getElementById("inpFile");
+                const previewContainer = document.getElementById("imagePreview");
+                const previewImage = previewContainer.querySelector(".image-preview__image");
+                const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+
+                inpFile.addEventListener("change", function () {
+                    const file = this.files[0];
+
+                    if (file) {
+                        const reader = new FileReader();
+
+                        previewDefaultText.style.display = "none";
+                        previewImage.style.display = "block";
+
+                        imagePreview.style.border = "none";
+
+                        reader.addEventListener("load", function () {
+                            console.log(this);
+                            previewImage.setAttribute("src", this.result);
+                        });
+
+                        reader.readAsDataURL(file);
+                    } else {
+                        previewDefaultText.style.display = null;
+                        previewImage.style.display = null;
+                    }
+                });
+            </script>
+
+        </div>
+
         <!-- <div class="container">
             <div class="row mt-5">
 
