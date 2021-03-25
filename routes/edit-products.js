@@ -26,12 +26,18 @@ module.exports = {
         let snackname = req.body.fname;
         let price = req.body.price;
         let amount = req.body.amount;
-
-        console.log(req.body);
-
-        res.redirect("/edit");
-
+        //console.log(req.body);
         //update to firebase
+        var str = String("nowsnack/s" + snackid);
+        var up = database.ref(str);
+        console.log(up);
+        up.update({ name: snackname, price: price, amount: amount }).then(function () {
+            console.log("Success!");
+            res.redirect("/edit");
+        }).catch(function (error) {
+            console.log("Update error : " + error.message);
+
+        })        
     }
 
 }
