@@ -7,62 +7,72 @@
 
 <body>
     <%- include ("../partials/nav.ejs") %>
-
         <div class="container">
             <!-- <div class="row mt-5"> -->
             <% var x=0 ; %>
                 <% for ( let key in value ) { %>
-                    <% if ( x%2 == 0 ) { %>
+                    <% if ( x%2==0 ) { %>
                         <div class="row mt-5">
-                        <% } %>
-                            <div class="col">
-                                <img class="img-fluid img-edit" src="<%= value[key].img %>" alt="">
-                            </div>
+                            <% } %>
+                                <div class="col">
+                                    <img class="img-fluid img-edit" src="<%= value[key].img %>" alt="">
+                                </div>
 
-                            <div class="form-detail text-left" style="width: 120px;">
-                                <label class="product-detail_2" for="Name">
-                                    <%= value[key].name %>
-                                </label> <br>
+                                <div class="form-detail text-left" style="width: 120px;">
+                                    <label class="product-detail_2" for="Name">
+                                        <%= value[key].name %>
+                                    </label> <br>
 
-                                <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
-                                <br>
-                                จำนวนคงเหลือ <%= value[key].amount %> ชิ้น <br>
-                                    <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i
-                                            class='fas fa-edit'></i></button>
-                            </div>
+                                    <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
+                                    <br>
+                                    จำนวนคงเหลือ <%= value[key].amount %> ชิ้น <br>
+                                        <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i
+                                                class='fas fa-edit'></i></button>
+                                </div>
 
-                            <div class="col">
-                                <button type="button" class="btn btn-info" data-toggle="collapse"
-                                    data-target="#demo<%= x %> ">แก้ไขข้อมูล</button>
-                                <div id="demo<%= x %>" class="collapse">
-                                    <div class="mt-1 p-1"
-                                        style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
+                                <div class="col">
+                                    <button type="button" class="btn btn-info" data-toggle="collapse"
+                                        data-target="#demo<%= x %> ">แก้ไขข้อมูล</button>
+                                    <div id="demo<%= x %>" class="collapse">
+                                        <div class="mt-1 p-1"
+                                            style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
 
-                                        <label for="">ชื่อ:</label>
-                                        <input style="width: 150px;" type="text" id="fname" name="fname"
-                                            placeholder="ชื่อขนม" value="<%= value[key].name %>">
-                                            <br>
+                                            <form action="/edit/submit" method="post">
 
-                                        <label for="">ราคา:</label>
-                                        <input type="number" id="price" name="price" min="1" max="50" value="<%= value[key].price %>"> บาท <br>
+                                                <label for="" class="d-none">ID:</label>
+                                                <input type="text" name="ID" id="" value="<%= value[key].id %>"
+                                                    class="d-none">
 
-                                        <label for="">จำนวน:</label>
-                                        <input type="number" id="quantity" name="quantity" min="0" max="9" value="<%= value[key].amount %>"> ชิ้น <br>
+                                                <br>
+                                                <label for="">ชื่อ:</label>
+                                                <input style="width: 150px;" type="text" name="fname"
+                                                    placeholder="ชื่อขนม" value="<%= value[key].name %>" required>
+                                                <br>
 
-                                        <button style='margin-top: 5px; font-size:14px; color:red' > บันทึก <i
-                                                class='fas fa-save'></i></button>
+                                                <label for="">ราคา:</label>
+                                                <input type="number" id="" name="price" min="1" max="50"
+                                                    value="<%= value[key].price %>"> บาท <br>
+
+                                                <label for="">จำนวน:</label>
+                                                <input type="number" id="" name="amount" min="0" max="9"
+                                                    value="<%= value[key].amount %>"> ชิ้น <br>
+
+                                                <button style='margin-top: 5px; font-size:14px; color:red'
+                                                    type="submit"> บันทึก <i class='fas fa-save'></i></button>
+                                            </form>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <% if ( x%2 != 0 ) { %>
-                                </div>
-                                
-                                    <% } %>
+                                <% if ( x%2 !=0 ) { %>
+                        </div>
 
-                                        <% x=x + 1 ; %>
-                                            <% } %>
-                                                <!-- </div> -->
+                        <% } %>
+
+                            <% x=x + 1 ; %>
+                                <% } %>
+                                    <!-- </div> -->
         </div>
 
         <br><br><br>
