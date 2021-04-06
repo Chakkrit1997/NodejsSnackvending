@@ -1,4 +1,4 @@
-const fs = require('fs');
+//const fs = require('fs');
 
 module.exports = {
     editProducts: (req, res) => {
@@ -37,7 +37,31 @@ module.exports = {
         }).catch(function (error) {
             console.log("Update error : " + error.message);
 
-        })        
+        });
+    },
+    editImg: (req, res) => {
+        if (req.files) {
+            console.log(req.files.file);
+            let snackid = req.body.ID;
+            let snackimg = req.body.image;
+            var str = String("nowsnack/s" + snackid);
+            //var up = database.ref(str);
+            //console.log(up);
+
+            // up.update({ img: snackimg }).then(function () {
+            //     console.log("img success!");
+            //     res.redirect("/edit");
+            // }).catch(function (error) {
+            //     console.log("Update img error : " + error.message);
+            // });
+            console.log("img success!");
+            res.redirect("/edit");
+            
+        } else {
+            
+            res.status(400).send("No file were Upload!");
+            res.redirect("/edit");
+        }
     }
 
 }

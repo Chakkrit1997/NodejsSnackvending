@@ -26,6 +26,20 @@
                                     <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
                                     <br>
                                     จำนวนคงเหลือ <%= value[key].amount %> ชิ้น <br>
+
+                                    <div>
+                                        <form action="/edit/img" method="POST" enctype="multipart/form-data">
+                                            <input type="text" name="ID" id="" value="<%= value[key].id %>"
+                                            class="d-none">
+
+                                            <input type="file" name="file" id="snack-img" >
+                                            <button type="submit" id=""> อัพโหลด </button>
+
+                                        </form>
+                                    </div>
+
+
+
                                         <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i
                                                 class='fas fa-edit'></i></button>
                                 </div>
@@ -38,7 +52,6 @@
                                             style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
 
                                             <form action="/edit/submit" method="post">
-
                                                 <label for="" class="d-none">ID:</label>
                                                 <input type="text" name="ID" id="" value="<%= value[key].id %>"
                                                     class="d-none">
