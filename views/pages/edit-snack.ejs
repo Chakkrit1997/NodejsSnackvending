@@ -15,7 +15,7 @@
                         <div class="row mt-5">
                             <% } %>
                                 <div class="col">
-                                    <img class="img-fluid img-edit" src="<%= value[key].img %>" alt="">
+                                    <img class="img-fluid img-edit" src="<%= value[key].img %>" alt="<%= value[key].name %>">
                                 </div>
 
                                 <div class="form-detail text-left" style="width: 120px;">
@@ -26,8 +26,17 @@
                                     <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
                                     <br>
                                     จำนวนคงเหลือ <%= value[key].amount %> ชิ้น <br>
-                                        <button style='margin-top: 10px; font-size:14px; color:gray'> แก้ไขรูป <i
-                                                class='fas fa-edit'></i></button>
+                                        <form action="/edit/photosubmit" method="POST" enctype="multipart/form-data">
+                                            <!-- <button style='margin-top: 10px; font-size:14px; color:gray' 
+                                                onclick="document.getElementById('inpFile').click(); return false;">
+                                                แก้ไขรูป1 <i class='fas fa-edit'></i></button> -->
+                                            <input type="text" name="snackname" id="" style="display: none;" value="<%= value[key].name %>">
+                                            <input type="text" name="id" id="" style="display: none;" value="<%= value[key].id %>">
+
+                                            <input type="file" name="image" id="snack-img">
+                                            <button type="submit" class="btn btn-primary">ส่ง</button>
+                                        </form>
+                                        <!-- <input type="file" name="Image" id="snack-img" type="submit"> -->
                                 </div>
 
                                 <div class="col">
@@ -101,7 +110,7 @@
                     <br>
                     จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น <br>
                         <button style='margin-top: 10px; font-size:14px; color:gray'
-                            onclick="document.getElementById('inpFile').click(); return false;"> แก้ไขรูป <i
+                            onclick="document.getElementById('inpFile').click(); return false;"> แก้ไขรูป1 <i
                                 class='fas fa-edit'></i></button>
                         <input type="file" name="inpFile" id="inpFile" style="display: none;">
 
@@ -115,8 +124,7 @@
                             style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
 
                             <label for="">ชื่อ:</label>
-                            <input style="width: 150px;" type="text" id="fname" name="fname"
-                                placeholder="ขนม"><br>
+                            <input style="width: 150px;" type="text" id="fname" name="fname" placeholder="ขนม"><br>
 
                             <label for="">ราคา:</label>
                             <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
@@ -150,7 +158,7 @@
                     <br>
                     จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น <br>
                         <button style='margin-top: 10px; font-size:14px; color:gray'
-                            onclick="document.getElementById('inpFile1').click(); return false;"> แก้ไขรูป <i
+                            onclick="document.getElementById('inpFile1').click(); return false;"> แก้ไขรูป2 <i
                                 class='fas fa-edit'></i></button>
                         <input type="file" name="inpFile1" id="inpFile1" style="display: none;">
 
@@ -164,8 +172,7 @@
                             style="border: 3px solid #ac8d70; background-color: white; border-radius: 5px; color: dimgrey; width: 200px;">
 
                             <label for="">ชื่อ:</label>
-                            <input style="width: 150px;" type="text" id="fname" name="fname"
-                                placeholder="ขนม"><br>
+                            <input style="width: 150px;" type="text" id="fname" name="fname" placeholder="ขนม"><br>
 
                             <label for="">ราคา:</label>
                             <input type="number" id="quantity" name="quantity" min="1" max="5"> บาท <br>
@@ -182,7 +189,7 @@
 
             </div>
 
-            
+
 
             <script>
                 const inpFile = document.getElementById("inpFile");
