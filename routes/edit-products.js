@@ -1,4 +1,4 @@
-const fs = require('fs');
+//const fs = require('fs');
 
 module.exports = {
     editProducts: (req, res) => {
@@ -72,7 +72,6 @@ module.exports = {
             console.log("Not file fond");
             return res.status(400).send('Nofile were upload!');
         }
-
     }
 
 }

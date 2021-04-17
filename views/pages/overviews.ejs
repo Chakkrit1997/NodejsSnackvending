@@ -4,63 +4,66 @@
 <head>
     <%- include ("../partials/header.ejs") %>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['line']});
-        google.charts.setOnLoadCallback(drawChart);
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', { 'packages': ['line'] });
+            google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+            function drawChart() {
 
-        var data = new google.visualization.DataTable();
-        data.addColumn('number', 'วัน');
-        <% for ( let key in value ) { %>
-            data.addColumn('number', '<%= value[key].name %>' );
-            <% } %> 
+                var data = new google.visualization.DataTable();
+                data.addColumn('number', 'วัน');
+        <% for (let key in value.nowsnack) { %>
+                    data.addColumn('number', '<%= value.nowsnack[key].name %>');
+            <% } %>
 
-        data.addRows([
-            [1,  37.8, 80.8, 41.8, 45, 12, 32.4,  37.8, 80.8, 41.8, 45 ],
-            [2,  30.9, 69.5, 32.4, 69.5, 32.4,  37.8, 80.8, 41.8, 45, 12],
-            [3,  25.4,   57, 25.7,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [4,  11.7, 18.8, 10.5,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [5,  11.9, 17.6, 10.4,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [6,   8.8, 13.6,  7.7,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [7,   7.6, 12.3,  9.6,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [8,  12.3, 29.2, 10.6,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [9,  16.9, 42.9, 14.8,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [10, 12.8, 30.9, 11.6,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [11,  5.3,  7.9,  4.7,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [12,  6.6,  8.4,  5.2,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [13,  4.8,  6.3,  3.6,   57, 25.7,  37.8, 80.8, 41.8, 45, 12],
-            [14,  4.2,  6.2,  3.4,   57, 25.7,  37.8, 80.8, 41.8, 45, 12]
-        ]);
 
-        var options = {
-            chart: {
-                title: 'สรุปยอดขายใน 2 สัปดาห์',
-                subtitle: 'บาท (Bath)'
-            },
-            width: 900,
-            height: 500,
-      };
 
-      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+                    data.addRows([
+                        [1, 37.8, 80.8, 41.8, 45, 12, 32.4, 37.8, 80.8, 41.8, 45],
+                        [2, 30.9, 69.5, 32.4, 69.5, 32.4, 37.8, 80.8, 41.8, 45, 12],
+                        [3, 25.4, 57, 25.7, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [4, 11.7, 18.8, 10.5, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [5, 11.9, 17.6, 10.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [6, 8.8, 13.6, 7.7, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [7, 7.6, 12.3, 9.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [8, 12.3, 29.2, 10.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [9, 16.9, 42.9, 14.8, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [10, 12.8, 30.9, 11.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [11, 5.3, 7.9, 4.7, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [12, 6.6, 8.4, 5.2, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [13, 4.8, 6.3, 3.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [14, 4.2, 6.2, 3.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
+                        [15, 4.2, 6.2, 3.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12]
+                    ]);
 
-      chart.draw(data, google.charts.Line.convertOptions(options));
-    }
-    </script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-  
-        function drawChart() {
-  
-          var data = google.visualization.arrayToDataTable([
-            ['Snack', 'Amonun sold'],
-            <% for ( let key in value ) { %>
-                ['<%= value[key].name %>', <%= value[key].amount %> ],
+                var options = {
+                    chart: {
+                        title: 'สรุปยอดขายใน 2 สัปดาห์',
+                        subtitle: 'บาท (Bath)'
+                    },
+                    width: 900,
+                    height: 500,
+                };
+
+                var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+                chart.draw(data, google.charts.Line.convertOptions(options));
+            }
+        </script>
+        <script type="text/javascript">
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Snack', 'Amonun sold'],
+            <% for (let key in value.nowsnack) { %>
+                    ['<%= value.nowsnack[key].name %>', <%= value.nowsnack[key].amount %> ],
                 <% } %>
             // ['1',     2],
             // ['2',      3],
@@ -68,84 +71,119 @@
             // ['4', 5],
             // ['5',    3]
           ]);
-  
-          var options = {
-            title: 'Percent of snacks sold'
-          };
-  
-          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-  
-          chart.draw(data, options);
-        }
-      </script>
+
+                var options = {
+                    title: 'Percent of snacks sold'
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+            }
+        </script>
 </head>
 
 <body style="background-color: white;">
     <%- include ("../partials/nav.ejs") %>
 
-    <div class="container">
-        <h1 style="font-family: 'Abel', sans-serif;">Overview</h1>
+        <div class="container">
+            <h1 style="font-family: 'Abel', sans-serif;">Overview</h1>
 
-        <!-- Graph -->
-        <div id="linechart_material" style="width: 900px; height: 500px; "></div>
+            <!-- Graph -->
+            <div id="linechart_material" style="width: 900px; height: 500px; "></div>
 
-        <!-- Detail -->
-        <div class="row">
+            <!-- Detail -->
+            <div class="row">
 
-            <div class="col-6">
-                <div class="sum-head">
-                    <h4>Total sales (ยอดขายทั้งหมด)</h4> 
+                <div class="col-6">
+                    <div class="sum-head">
+                        <h4>Total sales (ยอดขายทั้งหมด)</h4>
+                    </div>
+                    <div class="sum-data">
+                        <% var total_sum=0 %>
+                            <% for ( let key in value.complete ) { %>
+                                <% for ( let key_ in value.complete[key] ) { %>
+                                    <% var sum_itself=value.complete[key][key_].amount * value.complete[key][key_].cost
+                                        %>
+                                        <% if (!isNaN(sum_itself)) { %>
+                                            <% total_sum +=sum_itself %>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% } %>
+                                                            <%= total_sum %> บาท
+                    </div>
                 </div>
-                <div class="sum-data">
-                    ฿25,000.00
+
+                <div class="col-6">
+                    <% var total_sold=0 %>
+                        <div class="sum-head">
+                            <h4>Total amount of snacks sold (จำนวนขนมที่ขายได้ทั้งหมด)</h4>
+                        </div>
+                        <div class="sum-data">
+                            <% for ( let key in value.complete ) { %>
+                                <% for ( let key_ in value.complete[key] ) { %>
+                                    <% var sold_itself=value.complete[key][key_].amount %>
+                                        <% if (!isNaN(sold_itself)) { %>
+                                            <% total_sold += sold_itself %>
+                                                <% } %>
+                                        <% } %>
+                                            <% } %>
+                                            <%= total_sold %> ชิ้น
+                        </div>
+
                 </div>
+
             </div>
 
-            <div class="col-6">
-                
-                <div class="sum-head">
-                        <h4>Total amount of snacks sold (จำนวนขนมที่ขายได้ทั้งหมด)</h4> 
+            <!-- Graph -->
+            <div class="row col-12">
+                <div class="middle" id="piechart" style="width: 900px; height: 500px;"></div>
+            </div>
+
+            <!-- Detail -->
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="sum-head">
+                        <h4>ฺBest selling snack (ขนมขายดี)</h4>
+                    </div>
+                    <div class="sum-data">
+                        กูนี่ไง
+                    </div>
                 </div>
-                <div class="sum-data">
-                        5,000 ชิ้น
+
+                <div class="col-6">
+
+                    <div class="sum-head">
+                        <h4>Bad selling snacks (ขนมที่ขายได้ไม่ดี)</h4>
+                    </div>
+                    <div class="sum-data">
+                        <%#= new Date().toJSON().slice(0,10).split('-2').join(',') %>
+                        <%#= new Date().toISOString().slice(0,15).split('-2').join(',') %>
+                        <%= new Date().toString().split("G")[0];  %>
+                        <br><br>
+                        <%# var diff = Date.parse(new Date()); %>
+                        <%# var s1 = new Date().toISOString().slice(0,10).split('-2').join(',') %>
+                        <%# var s2 = new Date().toISOString().slice(0,10).split('-2').join(',') %>
+                        <% var date1 = new Date(); %>
+                        <% var date2 = new Date("Fri Apr 2 2021 21:33:52"); %>
+                        
+                        <%# var s2 = new Date().toJSON().slice(0,10).split('-').join(','); %>
+                        <%= date2 %> 
+                        <% var diff = new Date(date1.getTime() - date2.getTime()); %> 
+
+                        <br><br><br>
+                        <%= diff.getUTCDate() - 1 %>
+
+
+                    </div>
+
                 </div>
-                
+
             </div>
 
         </div>
-
-        <!-- Graph -->
-        <div class="row col-12">
-            <div class="middle" id="piechart" style="width: 900px; height: 500px;"></div>
-        </div>
-
-        <!-- Detail -->
-        <div class="row">
-
-            <div class="col-6">
-                <div class="sum-head">
-                    <h4>ฺBest selling snack (ขนมขายดี)</h4> 
-                </div>
-                <div class="sum-data">
-                    กูนี่ไง
-                </div>
-            </div>
-
-            <div class="col-6">
-                
-                <div class="sum-head">
-                        <h4>Bad selling snacks (ขนมที่ขายได้ไม่ดี)</h4> 
-                </div>
-                <div class="sum-data">
-                        ชั้นเอง!
-                </div>
-                
-            </div>
-
-        </div>
-        
-    </div>
-    <br><br><br><br>
+        <br><br><br><br>
 </body>
 
 </html>

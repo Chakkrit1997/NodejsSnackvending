@@ -40,8 +40,10 @@ app.get('/', getHomePage);
 app.get('/edit', editProducts);
 app.get('/overview', Overviews);
 
+
 app.post('/edit/submit', editSnack);
 app.post('/edit/photosubmit', editPhoto);
+
 
 
 app.listen(port, () => {
