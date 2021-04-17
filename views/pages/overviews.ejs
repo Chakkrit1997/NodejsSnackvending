@@ -92,6 +92,68 @@
             <!-- Graph -->
             <div id="linechart_material" style="width: 900px; height: 500px; "></div>
 
+            <!-- Filter Data -->
+            <div class="row mb-5">
+
+                <div class="col-6">
+                    <h4>Data</h4>
+                    Today is <%= new Date(); %> <br><br>
+                    <% for (let key in value.complete) { %>
+                        
+                        <% var temp = new Date(value.complete[key].date);  %> 
+
+                        <%= temp %> <br>
+        
+                        <% var today = new Date(); %>
+
+                        <% var difference = new Date(today.getTime() - temp.getTime()); %>
+                        <% var dY = difference.getUTCFullYear() - 1970 %> 
+                        <% var dM = difference.getUTCMonth() %> 
+                        <% var dD = difference.getUTCDate() - 1 %> 
+                        Difference = Year <%= dY %> Month <%= dM %> Day <%= dD %> 
+                        <br>
+                        
+                        <% if ( dY < 1 && dM < 1 && dD < 15 ) { %>
+                            OK! <br>
+                            <% var s1 %> 
+                            <% for ( let key_ in value.complete[key] ) { %>
+                                ...<br>
+                                <% var st1 = value.complete[key][key_].toString() %> 
+                                <% if ( 1 ) %>         
+                                ...<br>
+                            <% } %> 
+                            <br>
+                        <% } else { %>
+                            <br>
+                        <% } %>
+
+                        <% } %>
+                    
+                </div>
+
+                <div class="col-2">
+
+                    <h4>Information</h4>
+                    <% for (let key in value.nowsnack) { %>
+                        
+                        <%= value.nowsnack[key].name %> <br>
+        
+                        <% } %>  
+                </div>
+
+                <div class="col-4">
+                
+                    <h6 class="mt-2 ml-2"> 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - 11 - 12 - 13 - 14 </h6>
+                    <% for (let key in value.nowsnack) { %>
+                        
+                        : <br>
+        
+                        <% } %>
+                    
+                </div>
+
+            </div>
+
             <!-- Detail -->
             <div class="row">
 
@@ -124,11 +186,11 @@
                                 <% for ( let key_ in value.complete[key] ) { %>
                                     <% var sold_itself=value.complete[key][key_].amount %>
                                         <% if (!isNaN(sold_itself)) { %>
-                                            <% total_sold += sold_itself %>
+                                            <% total_sold +=sold_itself %>
                                                 <% } %>
-                                        <% } %>
-                                            <% } %>
-                                            <%= total_sold %> ชิ้น
+                                                    <% } %>
+                                                        <% } %>
+                                                            <%= total_sold %> ชิ้น
                         </div>
 
                 </div>
@@ -158,27 +220,36 @@
                         <h4>Bad selling snacks (ขนมที่ขายได้ไม่ดี)</h4>
                     </div>
                     <div class="sum-data">
-                        <%#= new Date().toJSON().slice(0,10).split('-2').join(',') %>
-                        <%#= new Date().toISOString().slice(0,15).split('-2').join(',') %>
-                        <%= new Date().toString().split("G")[0];  %>
-                        <br><br>
-                        <%# var diff = Date.parse(new Date()); %>
-                        <%# var s1 = new Date().toISOString().slice(0,10).split('-2').join(',') %>
-                        <%# var s2 = new Date().toISOString().slice(0,10).split('-2').join(',') %>
-                        <% var date1 = new Date(); %>
-                        <% var date2 = new Date("Fri Apr 2 2021 21:33:52"); %>
-                        
-                        <%# var s2 = new Date().toJSON().slice(0,10).split('-').join(','); %>
-                        <%= date2 %> 
-                        <% var diff = new Date(date1.getTime() - date2.getTime()); %> 
 
-                        <br><br><br>
-                        <%= diff.getUTCDate() - 1 %>
-
+                        ok
 
                     </div>
 
                 </div>
+
+            </div>
+
+            <div class="TesT">
+                <%#= new Date().toJSON().slice(0,10).split('-2').join(',') %>
+                    <%#= new Date().toISOString().slice(0,15).split('-2').join(',') %>
+                        <%= new Date().toString().split("G")[0]; %>
+                            <br><br>
+                            <%# var diff=Date.parse(new Date()); %>
+                                <%# var s1=new Date().toISOString().slice(0,10).split('-2').join(',') %>
+                                    <%# var s2=new Date().toISOString().slice(0,10).split('-2').join(',') %>
+                                        <% var date1=new Date(); %>
+                                            <% var date2=new Date("Tue Mar 16 2021 21:33:52"); %>
+
+                                                <%# var s2=new Date().toJSON().slice(0,10).split('-').join(','); %>
+                                                    <%= date2 %>
+                                                        <% var diff=new Date(date1.getTime() - date2.getTime()); %>
+
+                                                            <br><br><br>
+                                                            Difference (Year) <%= diff.getUTCFullYear() - 1970 %> <br>
+                                                                Difference (month) <%= diff.getUTCMonth() %>
+                                                                    <br>
+                                                                    Difference (day) <%= diff.getUTCDate() - 1 %>
+
 
             </div>
 
