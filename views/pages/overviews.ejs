@@ -64,7 +64,7 @@
                     ['Snack', 'Amonun sold'],
             <% for (let key in value.nowsnack) { %>
                     ['<%= value.nowsnack[key].name %>', <%= value.nowsnack[key].amount %> ],
-                <% } %>
+            <% } %>
             // ['1',     2],
             // ['2',      3],
             // ['3',  4],
@@ -95,60 +95,136 @@
             <!-- Filter Data -->
             <div class="row mb-5">
 
+                <!-- Raw Data -->
                 <div class="col-6">
-                    <h4>Data</h4>
-                    Today is <%= new Date(); %> <br><br>
-                    <% for (let key in value.complete) { %>
+
+                    <h4>Raw Data ข้อมูลดิบ</h4>
+
+                    <!-- ข้อมูลของวันนี้ -->
+                    Today:
+                    <% var showThisDay = new Date().toString().split("G")[0]; %>
+                    <%= showThisDay %>
+
+                                <!--// ดูข้อมูลดิบของวันนี้ //-->
+                                <!-- <br> Raw: -->
+                                <%#= new Date(); %>
+                                <!-- <br> -->
+
+                    <hr><br><br>
+
+                    <!-- ประกาศตัวแปร --> 
+                    <% var soldSnackName = []; %> 
+                    <% var today = new Date(); %> 
+
+                    <!-- วนดูข้อมูลทั้งหมดในฐานข้อมูล --> 
+                    <% for (let key in value.complete) { %> 
                         
-                        <% var temp = new Date(value.complete[key].date);  %> 
-
-                        <%= temp %> <br>
+                        <!-- สำหรับการแสดงวันที่ของข้อมูลนั้น ๆ --> 
+                        <% var tempThatDay = new Date(value.complete[key].date);  %> 
+                        <% var showThatDay = tempThatDay.toString().split("G")[0]; %> 
+                        <%= showThatDay %> 
+                        <br> 
         
-                        <% var today = new Date(); %>
-
-                        <% var difference = new Date(today.getTime() - temp.getTime()); %>
+                        <!-- คำนวณความนานของข้อมูลนั้น ๆ --> 
+                        <% var difference = new Date(today.getTime() - tempThatDay.getTime()); %> 
                         <% var dY = difference.getUTCFullYear() - 1970 %> 
                         <% var dM = difference.getUTCMonth() %> 
                         <% var dD = difference.getUTCDate() - 1 %> 
                         Difference = Year <%= dY %> Month <%= dM %> Day <%= dD %> 
                         <br>
                         
+                        <!-- กรองข้อมูลที่มีความนานไม่เกิน 14 วัน -->
                         <% if ( dY < 1 && dM < 1 && dD < 15 ) { %>
-                            OK! <br>
-                            <% var s1 %> 
+
+                            Show?: Yes!
+                            <br><br>
+
+                            <!-- วนดูข้อมูลออเดอร์ทั้งหมดของวัน -->
                             <% for ( let key_ in value.complete[key] ) { %>
-                                ...<br>
-                                <% var st1 = value.complete[key][key_].toString() %> 
-                                <% if ( 1 ) %>         
-                                ...<br>
-                            <% } %> 
+
+                                <!-- เก็บค่าของ Object ทั้งหมดในแต่ละออเดอร์เพื่อนำไปใช้ -->
+                                <% var tempObject = value.complete[key][key_] %>
+                                
+                                <!-- ถ้าออเดอร์มีค่าเป็น Object *ที่ไม่ใช่วันที่, ยอดรวมของออเดอร์ -->
+                                <% if ( typeof tempObject === 'object' ) {%>
+
+                                    <!-- รายละเอียดในออเดอร์ -->
+                                    <% var tempName = value.complete[key][key_].name %>
+                                    <% var tempAmount = value.complete[key][key_].amount %>
+
+                                    
+                                    ซื้อ "<%= tempName %>" จำนวน <%= tempAmount %> ชิ้น 
+                                    <br>
+                                    
+                                    <!-- ถ้าในรายการชื่อขนมที่จะนำไปแสดงยังไม่มีอะไรเลย -->
+                                    <% if (soldSnackName.length === 0) {%>
+
+                                        <!-- Push ชื่อขนมไปในรายการ -->
+                                        <% soldSnackName.push(tempName); %>
+
+                                        เริ่มต้นบันทึกรายการเพื่อนำไปแสดงแล้ว! 
+                                        <br><br>
+                                        
+                                    <% } else { %> <!-- ถ้ามีแล้ว -->
+
+                                        <!-- ถ้าชื่อไม่ซ้ำ -->
+                                        <% if (soldSnackName.indexOf(tempName) == -1) {%>
+
+                                            <% soldSnackName.push(tempName); %>
+                                            บันทึกรายการต่อแล้ว!
+                                            <br>
+
+                                        <% } else { %> <!-- ถ้าซ้ำ -->
+
+                                                ซ้ำ!
+                                                <br><br>
+
+                                                <!-- หาวิธีเพิ่มจำนวนในรายการที่ซ้ำ -->
+
+                                            <% } %>
+
+                                    <% } %>
+
+                                <% } %>
+
+                            <% } %>
+
                             <br>
+
                         <% } else { %>
-                            <br>
-                        <% } %>
+
+                            Show?: No...
+                            <br><br>
 
                         <% } %>
+                        
+                        <hr>
+
+                    <% } %>
+
+                    <!-- แสดงชื่อขนมที่บันทึกเข้าในรายการที่นำไปแสดง -->
+                    ขนมที่ขายได้: <%= soldSnackName %> 
                     
                 </div>
 
                 <div class="col-2">
 
                     <h4>Information</h4>
-                    <% for (let key in value.nowsnack) { %>
+
+                    <!-- ชื่อขนมที่บันทึกในรายการ -->
+                    <% for (var i = 0 ; i < soldSnackName.length ; i++) { %>
+
+                        <%= soldSnackName[i] %>
+                        <br>
                         
-                        <%= value.nowsnack[key].name %> <br>
-        
-                        <% } %>  
+                    <% } %> 
+
                 </div>
 
                 <div class="col-4">
                 
                     <h6 class="mt-2 ml-2"> 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - 11 - 12 - 13 - 14 </h6>
-                    <% for (let key in value.nowsnack) { %>
-                        
-                        : <br>
-        
-                        <% } %>
+                    
                     
                 </div>
 

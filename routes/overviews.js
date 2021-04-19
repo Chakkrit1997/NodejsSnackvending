@@ -25,7 +25,7 @@ module.exports = {
         var snackobj = database.ref().once('value').then(function (dataSnapshot) {
             obj = dataSnapshot.val();
             res.render('pages/overviews.ejs', {
-                title: "Welcome to snack vending",
+                title: "SVM",
                 value: obj,
                 // result: abj,
             });
