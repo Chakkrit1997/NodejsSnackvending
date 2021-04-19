@@ -89,10 +89,11 @@
             <h1 style="font-family: 'Abel', sans-serif;">Overview</h1>
 
             <!-- Graph -->
-            <div id="linechart_material" style="width: 900px; height: 500px; "></div>
+            <!-- <div id="linechart_material" style="width: 900px; height: 500px; "></div> -->
 
             <!-- Filter Data -->
-            <div class="row mb-5">
+            <button type="button" class="btn btn-danger mb-5" data-toggle="collapse" data-target="#RawData">ดูข้อมูลดิบ</button>
+            <div id="RawData" class="row mb-5 collapse border">
 
                 <!-- Raw Data -->
                 <div class="col-6">
@@ -279,15 +280,15 @@
                     ขนมที่ขายได้: <%= soldSnackName %>
                     
                                 <!-- ข้อมูลสำหรับพลอตกราฟ -->
-                                <br><br>
+                                <!-- <br><br>
                                 ข้อมูลสำหรับพลอตกราฟ
-                                <br>
-                                <% for ( i = 0 ; i < 14 ; i++ ) {%>
+                                <br> -->
+                                <%# for ( i = 0 ; i < 14 ; i++ ) {%>
                                     
-                                    [ <%= soldSnackAmount[i] %> ]
-                                    <br>
+                                    <!-- [ <%#= soldSnackAmount[i] %> ] -->
+                                    <!-- <br> -->
 
-                                <% } %>                                   
+                                <%# } %>                                   
                     
                 </div>
 
@@ -307,8 +308,14 @@
 
                 <div class="col-4">
                 
-                    <h6 class="mt-2 ml-2"> 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - 11 - 12 - 13 - 14 </h6>
+                    <h6 class="mt-2 ml-2"> วันที่--> ขนมที่ขายได้ </h6>
                     
+                    <% for ( i = 0 ; i < 14 ; i++ ) {%>
+                                    
+                        [ <%= soldSnackAmount[i] %> ]
+                        <br>
+
+                    <% } %> 
                     
                 </div>
 
@@ -404,7 +411,9 @@
 
             <!-- Graph -->
             <div class="row col-12">
+
                 <div class="middle" id="piechart" style="width: 900px; height: 500px;"></div>
+
             </div>
 
             <!-- Detail -->
