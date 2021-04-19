@@ -35,8 +35,8 @@ module.exports = {
         up.update({ name: snackname, price: price, amount: amount }).then(function () {
             console.log("update Success!");
             res.status(200).redirect("/edit");
-        }).catch(function (error) {
-            console.log("Update error : " + error.message);
+        }).catch(function (err) {
+            console.log("Update error : " + err.message);
 
         })
     },
@@ -50,22 +50,28 @@ module.exports = {
             let img_name = upload_file.name;
             let fileExtension = upload_file.mimetype.split("/")[1];
             console.log(fileExtension);
-            img_name = "0" + snack_id + '.' + fileExtension;
+            img_name = snack_name + '.' + fileExtension; // 0 
             console.log(img_name);
-            if (upload_file.mimetype === 'image/jpeg' || upload_file.mimetype === 'image/png' || upload_file.mimetype === 'image/gif') {
+            if (upload_file.mimetype === 'image/jpeg' || upload_file.mimetype === 'image/png') { // || upload_file.mimetype === 'image/png' || upload_file.mimetype === 'image/gif'
                 console.log("pass");
                 upload_file.mv(`public/assets/img/snack/${img_name}`, (err) => {
-                    if (err){
+                    if (err) {
                         return res.status(500).send(err);
                     }
+                    let img_url = String("nowsnack/s" + snack_id);
+                    let img_address = String("assets/img/snack/" + img_name)
+                    let up = database.ref(img_url);
 
-                    
-
+                    up.update({ img: img_address }).then(function () {
+                        console.log("File was uploaded!");
+                    }).catch(function (err) {
+                        console.log("Update error : " + err.message);
+                    });
+                    //res.redirect("/edit");
                 });
             } else {
-                console.log("NOOOOO");
+                console.log("JPEG/PNG ONLY");
             }
-
             res.redirect("/edit");
         }
         else {
