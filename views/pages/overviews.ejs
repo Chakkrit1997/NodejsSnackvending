@@ -37,7 +37,6 @@
                         [12, 6.6, 8.4, 5.2, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
                         [13, 4.8, 6.3, 3.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
                         [14, 4.2, 6.2, 3.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [15, 4.2, 6.2, 3.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12]
                     ]);
 
                 var options = {
@@ -115,6 +114,26 @@
                     <!-- ประกาศตัวแปร --> 
                     <% var soldSnackName = []; %> 
                     <% var today = new Date(); %> 
+                    <% var soldSnackAmount = []; %>
+                    <% var day = 0 %> 
+
+                    <!-- กำหนด 14 วัน -->
+                        <% soldSnackAmount = ([
+                            [1],
+                            [2],
+                            [3],
+                            [4],
+                            [5],
+                            [6],
+                            [7],
+                            [8],
+                            [9],
+                            [10],
+                            [11],
+                            [12],
+                            [13],
+                            [14],
+                        ]) %>
 
                     <!-- วนดูข้อมูลทั้งหมดในฐานข้อมูล --> 
                     <% for (let key in value.complete) { %> 
@@ -162,6 +181,31 @@
                                         <!-- Push ชื่อขนมไปในรายการ -->
                                         <% soldSnackName.push(tempName); %>
 
+                                        <!-- วนสำหรับค่าเริ่มต้นของ 14 วัน -->
+                                        <% for (i=0 ; i< 14 ; i++) {%>
+                                            
+                                            <!-- ถ้าตรงกับวันที่นั้น ๆ ให้ค่าตัวนั้นเท่ากับจำนวนที่ขายได้ในวันนั้น -->
+                                            <% if (i == dD-1 ) {%>
+                                                
+                                                <!-- กำหนดค่าแรกของวันนั้น -->
+                                                <% soldSnackAmount[dD-1][soldSnackName.length] = value.complete[key][key_].amount %>
+
+                                                            <!-- เช็คว่ามาหรือไม่ -->
+                                                            <%#= soldSnackAmount[dD-1] %> 
+
+                                            <% } else { %>
+                                                
+                                                <!-- กำหนดค่าของวันอื่น ๆ -->
+                                                <% soldSnackAmount[i][soldSnackName.length] = 0 %>
+
+                                            <% } %> 
+                                                
+                                        <% } %> 
+
+                                        <!-- <br>  -->
+                                        <%#= soldSnackAmount[dD-1] %>
+                                        <!-- <br> -->
+
                                         เริ่มต้นบันทึกรายการเพื่อนำไปแสดงแล้ว! 
                                         <br><br>
                                         
@@ -171,12 +215,41 @@
                                         <% if (soldSnackName.indexOf(tempName) == -1) {%>
 
                                             <% soldSnackName.push(tempName); %>
+
+                                            <% for (i=0 ; i< 14 ; i++) {%>
+                                            
+                                                <% if (i == dD-1 ) {%>
+
+                                                    <% soldSnackAmount[dD-1][soldSnackName.length] = value.complete[key][key_].amount %>
+                                            
+                                                <% } else {%>
+                                                
+                                                    <% if (isNaN(soldSnackAmount[i][soldSnackName.length])) {%>
+                                                    
+                                                        <% soldSnackAmount[i][soldSnackName.length] = 0 %>
+
+                                                    <% } else {%>
+                                                        
+                                                        <% soldSnackAmount[i][soldSnackName.length] += 0 %>
+
+                                                    <% } %>
+
+                                                <% } %> 
+
+                                            <% } %> 
+                                            
+                                            <%#= soldSnackAmount[dD-1] %>
+
                                             บันทึกรายการต่อแล้ว!
-                                            <br>
+                                            <br><br>
 
                                         <% } else { %> <!-- ถ้าซ้ำ -->
 
-                                                ซ้ำ!
+                                                <% indexOfName = soldSnackName.indexOf(tempName)+1 %> 
+                                                <% soldSnackAmount[dD-1][indexOfName] += value.complete[key][key_].amount %>
+
+                                                <!-- <br> -->
+                                                เพิ่มจำนวนในรายการแล้ว!
                                                 <br><br>
 
                                                 <!-- หาวิธีเพิ่มจำนวนในรายการที่ซ้ำ -->
@@ -203,7 +276,18 @@
                     <% } %>
 
                     <!-- แสดงชื่อขนมที่บันทึกเข้าในรายการที่นำไปแสดง -->
-                    ขนมที่ขายได้: <%= soldSnackName %> 
+                    ขนมที่ขายได้: <%= soldSnackName %>
+                    
+                                <!-- ข้อมูลสำหรับพลอตกราฟ -->
+                                <br><br>
+                                ข้อมูลสำหรับพลอตกราฟ
+                                <br>
+                                <% for ( i = 0 ; i < 14 ; i++ ) {%>
+                                    
+                                    [ <%= soldSnackAmount[i] %> ]
+                                    <br>
+
+                                <% } %>                                   
                     
                 </div>
 
@@ -227,6 +311,51 @@
                     
                     
                 </div>
+
+            </div>
+
+            <div class="row">
+
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                    google.charts.load('current', { 'packages': ['line'] });
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('number', 'วัน');
+                        <% for (var i = 0 ; i < soldSnackName.length ; i++) { %>
+
+                            data.addColumn('number', '<%= soldSnackName[i] %>');
+
+                        <% } %>
+
+                        data.addRows([
+                            <% for ( var i = 0 ; i < 14 ; i++ ) {%>
+
+                                 [ <%= soldSnackAmount[i] %> ],
+
+                            <% } %>
+                        ]);
+
+                        var options = {
+                            chart: {
+                                        title: 'สรุปยอดขายใน 2 สัปดาห์',
+                                        subtitle: 'บาท (Bath)'
+                            },
+                            width: 900,
+                            height: 500,
+                        };
+
+                        var chart = new google.charts.Line(document.getElementById('linechart_material_'));
+
+                        chart.draw(data, google.charts.Line.convertOptions(options));
+                    }
+                </script>
+
+            
+                <div id="linechart_material_" style="width: 900px; height: 500px; "></div>
 
             </div>
 
