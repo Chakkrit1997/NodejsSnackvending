@@ -43,6 +43,7 @@
                     <% var soldSnackAmount = []; %>
                     <% var day = 0 %> 
                     <% var Summary = 0 %> 
+                    <% var amountSold = 0 %> 
 
                     <!-- กำหนด 14 วัน -->
                         <% soldSnackAmount = ([
@@ -110,7 +111,10 @@
 
                                     ราคารวมทั้งหมด:
                                     <% Summary += tempSummary %>
-                                    <%= Summary %>  
+                                    <%= Summary %>
+                                    (  
+                                    <% amountSold += tempAmount %> 
+                                    <%= amountSold %> ชิ้น) 
                                     <br>
                                     
                                     <!-- ถ้าในรายการชื่อขนมที่จะนำไปแสดงยังไม่มีอะไรเลย -->
@@ -313,46 +317,23 @@
                     </div>
                     <div class="sum-data">
 
-                        <%# var total_sum=0 %>
-
-                            <%# for ( let key in value.complete ) { %>
-
-                                <%# for ( let key_ in value.complete[key] ) { %>
-
-                                    <%# var sum_itself=value.complete[key][key_].amount * value.complete[key][key_].price %>
-
-                                        <%# if (!isNaN(sum_itself)) { %>
-
-                                            <%# total_sum +=sum_itself %>
-
-                                    <%# } %>
-
-                                <%# } %>
-
-                            <%# } %>
-                        <%#= total_sum %> 
-
-
                         <%= Summary %> บาท
 
                     </div>
                 </div>
 
                 <div class="col-6">
-                    <% var total_sold=0 %>
+
                         <div class="sum-head">
+
                             <h4>Total amount of snacks sold (จำนวนขนมที่ขายได้ทั้งหมด)</h4>
+
                         </div>
+
                         <div class="sum-data">
-                            <% for ( let key in value.complete ) { %>
-                                <% for ( let key_ in value.complete[key] ) { %>
-                                    <% var sold_itself=value.complete[key][key_].amount %>
-                                        <% if (!isNaN(sold_itself)) { %>
-                                            <% total_sold +=sold_itself %>
-                                                <% } %>
-                                                    <% } %>
-                                                        <% } %>
-                                                            <%= total_sold %> ชิ้น
+                            
+                            <%= amountSold  %> ชิ้น 
+
                         </div>
 
                 </div>
