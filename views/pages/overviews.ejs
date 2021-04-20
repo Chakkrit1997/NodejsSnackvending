@@ -4,79 +4,7 @@
 <head>
     <%- include ("../partials/header.ejs") %>
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', { 'packages': ['line'] });
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-
-                var data = new google.visualization.DataTable();
-                data.addColumn('number', 'วัน');
-        <% for (let key in value.nowsnack) { %>
-                    data.addColumn('number', '<%= value.nowsnack[key].name %>');
-            <% } %>
-
-
-
-                    data.addRows([
-                        [1, 37.8, 80.8, 41.8, 45, 12, 32.4, 37.8, 80.8, 41.8, 45],
-                        [2, 30.9, 69.5, 32.4, 69.5, 32.4, 37.8, 80.8, 41.8, 45, 12],
-                        [3, 25.4, 57, 25.7, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [4, 11.7, 18.8, 10.5, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [5, 11.9, 17.6, 10.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [6, 8.8, 13.6, 7.7, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [7, 7.6, 12.3, 9.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [8, 12.3, 29.2, 10.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [9, 16.9, 42.9, 14.8, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [10, 12.8, 30.9, 11.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [11, 5.3, 7.9, 4.7, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [12, 6.6, 8.4, 5.2, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [13, 4.8, 6.3, 3.6, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                        [14, 4.2, 6.2, 3.4, 57, 25.7, 37.8, 80.8, 41.8, 45, 12],
-                    ]);
-
-                var options = {
-                    chart: {
-                        title: 'สรุปยอดขายใน 2 สัปดาห์',
-                        subtitle: 'บาท (Bath)'
-                    },
-                    width: 900,
-                    height: 500,
-                };
-
-                var chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-                chart.draw(data, google.charts.Line.convertOptions(options));
-            }
-        </script>
-        <script type="text/javascript">
-            google.charts.load('current', { 'packages': ['corechart'] });
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-
-                var data = google.visualization.arrayToDataTable([
-                    ['Snack', 'Amonun sold'],
-            <% for (let key in value.nowsnack) { %>
-                    ['<%= value.nowsnack[key].name %>', <%= value.nowsnack[key].amount %> ],
-            <% } %>
-            // ['1',     2],
-            // ['2',      3],
-            // ['3',  4],
-            // ['4', 5],
-            // ['5',    3]
-          ]);
-
-                var options = {
-                    title: 'Percent of snacks sold'
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                chart.draw(data, options);
-            }
-        </script>
+        
 </head>
 
 <body style="background-color: white;">
@@ -90,7 +18,7 @@
 
             <!-- Filter Data -->
             <button type="button" class="btn btn-danger mb-5" data-toggle="collapse" data-target="#RawData">ดูข้อมูลดิบ</button>
-            <div id="RawData" class="row mb-5 collapse border" style="background: #ebecf0;">
+            <div id="RawData" class="row mb-5 pt-3 collapse border" style="background: #ebecf0;">
 
                 <!-- Raw Data -->
                 <div class="col-6">
@@ -114,6 +42,7 @@
                     <% var today = new Date(); %> 
                     <% var soldSnackAmount = []; %>
                     <% var day = 0 %> 
+                    <% var Summary = 0 %> 
 
                     <!-- กำหนด 14 วัน -->
                         <% soldSnackAmount = ([
@@ -168,9 +97,20 @@
                                     <!-- รายละเอียดในออเดอร์ -->
                                     <% var tempName = value.complete[key][key_].name %>
                                     <% var tempAmount = value.complete[key][key_].amount %>
+                                    <% var tempPrice = value.complete[key][key_].price %> 
 
-                                    
-                                    ซื้อ "<%= tempName %>" จำนวน <%= tempAmount %> ชิ้น 
+                                        <!-- คำนวณราคารวมในรายการนั้น -->
+                                    ซื้อ "<%= tempName %>" จำนวน <%= tempAmount %> ชิ้น ราคา <%= tempPrice %> บาท
+                                    <br>
+
+                                    ราคารวมในรายการนี้:
+                                    <% var tempSummary = tempPrice * tempAmount %>
+                                    <%= tempSummary %>
+                                    <br>
+
+                                    ราคารวมทั้งหมด:
+                                    <% Summary += tempSummary %>
+                                    <%= Summary %>  
                                     <br>
                                     
                                     <!-- ถ้าในรายการชื่อขนมที่จะนำไปแสดงยังไม่มีอะไรเลย -->
@@ -204,7 +144,7 @@
                                         <%#= soldSnackAmount[dD-1] %>
                                         <!-- <br> -->
 
-                                        เริ่มต้นบันทึกรายการเพื่อนำไปแสดงแล้ว! 
+                                        Action: เริ่มต้นบันทึกรายการเพื่อนำไปแสดงแล้ว! 
                                         <br><br>
                                         
                                     <% } else { %> <!-- ถ้ามีแล้ว -->
@@ -238,7 +178,7 @@
                                             
                                             <%#= soldSnackAmount[dD-1] %>
 
-                                            บันทึกรายการต่อแล้ว!
+                                            Action: บันทึกรายการต่อแล้ว!
                                             <br><br>
 
                                         <% } else { %> <!-- ถ้าซ้ำ -->
@@ -247,7 +187,7 @@
                                                 <% soldSnackAmount[dD-1][indexOfName] += value.complete[key][key_].amount %>
 
                                                 <!-- <br> -->
-                                                เพิ่มจำนวนในรายการแล้ว!
+                                                Action: เพิ่มจำนวนในรายการแล้ว!
                                                 <br><br>
 
                                                 <!-- หาวิธีเพิ่มจำนวนในรายการที่ซ้ำ -->
@@ -320,6 +260,7 @@
 
             <div class="row">
 
+                <!-- Graph JS -->
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script type="text/javascript">
                     google.charts.load('current', { 'packages': ['line'] });
@@ -358,8 +299,8 @@
                     }
                 </script>
 
-            
-                <div id="linechart_material_" style="width: 900px; height: 500px; "></div>
+                <!-- คำสั่งแสดงกราฟ -->
+                <div id="linechart_material_" style="width: 900px; height: 500px;"></div>
 
             </div>
 
@@ -371,17 +312,29 @@
                         <h4>Total sales (ยอดขายทั้งหมด)</h4>
                     </div>
                     <div class="sum-data">
-                        <% var total_sum=0 %>
-                            <% for ( let key in value.complete ) { %>
-                                <% for ( let key_ in value.complete[key] ) { %>
-                                    <% var sum_itself=value.complete[key][key_].amount * value.complete[key][key_].cost
-                                        %>
-                                        <% if (!isNaN(sum_itself)) { %>
-                                            <% total_sum +=sum_itself %>
-                                                <% } %>
-                                                    <% } %>
-                                                        <% } %>
-                                                            <%= total_sum %> บาท
+
+                        <%# var total_sum=0 %>
+
+                            <%# for ( let key in value.complete ) { %>
+
+                                <%# for ( let key_ in value.complete[key] ) { %>
+
+                                    <%# var sum_itself=value.complete[key][key_].amount * value.complete[key][key_].price %>
+
+                                        <%# if (!isNaN(sum_itself)) { %>
+
+                                            <%# total_sum +=sum_itself %>
+
+                                    <%# } %>
+
+                                <%# } %>
+
+                            <%# } %>
+                        <%#= total_sum %> 
+
+
+                        <%= Summary %> บาท
+
                     </div>
                 </div>
 
@@ -406,9 +359,39 @@
 
             </div>
 
-            <!-- Graph -->
+            
             <div class="row col-12">
 
+            <!-- Graph Detail -->
+            <script type="text/javascript">
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Snack', 'Amonun sold'],
+            <% for (let key in value.nowsnack) { %>
+                    ['<%= value.nowsnack[key].name %>', <%= value.nowsnack[key].amount %> ],
+            <% } %>
+            // ['1',     2],
+            // ['2',      3],
+            // ['3',  4],
+            // ['4', 5],
+            // ['5',    3]
+          ]);
+
+                var options = {
+                    title: ''
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+            }
+        </script>
+
+                <!-- Graph Display -->
                 <div class="middle" id="piechart" style="width: 900px; height: 500px;"></div>
 
             </div>
