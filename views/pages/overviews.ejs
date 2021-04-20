@@ -487,13 +487,14 @@
                                                                 Difference (month) <%#= diff.getUTCMonth() %>
                                                                     <br>
                                                                     Difference (day) <%#= diff.getUTCDate() - 1 %> -->
-                <%= new Date().toString().split("G")[0]; %>
-
+                
+                                                                
 
             </div>
-
+            <%#= new Date().toString().split("G")[0]; %>
         </div>
-        <br><br><br><br>
+        <br>
+        <%- include ("../partials/footer.ejs") %>
 </body>
 
 </html>

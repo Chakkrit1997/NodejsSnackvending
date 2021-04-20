@@ -100,7 +100,9 @@
 
         <br><br><br>
 
-        <div class="container">
+        <%- include ("../partials/footer.ejs") %>
+
+        <!-- <div class="container">
 
             <h1>Image Preview on File Upload</h1>
             <div class="row">
@@ -117,12 +119,12 @@
                 <div class="form-detail text-left" style="width: 120px;">
 
                     <label class="product-detail_2" for="Name">
-                        <%= value.s1.name %>
+                        <%#= value.s1.name %>
                     </label> <br>
 
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s1.price %> บาท</label>
+                    <label class="product-detail_2" for="Price">ราคา <%#= value.s1.price %> บาท</label>
                     <br>
-                    จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น <br>
+                    จำนวนคงเหลือ <%#= value.s1.amount %> ชิ้น <br>
                         <button style='margin-top: 10px; font-size:14px; color:gray'
                             onclick="document.getElementById('inpFile').click(); return false;"> แก้ไขรูป1 <i
                                 class='fas fa-edit'></i></button>
@@ -165,12 +167,12 @@
                 <div class="form-detail text-left" style="width: 120px;">
 
                     <label class="product-detail_2" for="Name">
-                        <%= value.s1.name %>
+                        <%#= value.s1.name %>
                     </label> <br>
 
-                    <label class="product-detail_2" for="Price">ราคา <%= value.s1.price %> บาท</label>
+                    <label class="product-detail_2" for="Price">ราคา <%#= value.s1.price %> บาท</label>
                     <br>
-                    จำนวนคงเหลือ <%= value.s1.amount %> ชิ้น <br>
+                    จำนวนคงเหลือ <%#= value.s1.amount %> ชิ้น <br>
                         <button style='margin-top: 10px; font-size:14px; color:gray'
                             onclick="document.getElementById('inpFile1').click(); return false;"> แก้ไขรูป2 <i
                                 class='fas fa-edit'></i></button>
@@ -235,7 +237,7 @@
                 });
             </script>
 
-        </div>
+        </div> -->
 
         <!-- <div class="container">
             <div class="row mt-5">
