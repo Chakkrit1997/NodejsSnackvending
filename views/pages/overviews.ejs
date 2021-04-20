@@ -251,13 +251,55 @@
                 
                     <h6 class="mt-2 ml-2"> วันที่--> ขนมที่ขายได้ </h6>
                     
+                    
+
                     <% for ( i = 0 ; i < 14 ; i++ ) {%>
                                     
                         [ <%= soldSnackAmount[i] %> ]
                         <br>
 
-                    <% } %> 
+                    <% } %>
+                    <br>
                     
+                    <!-- ดูข้อมูลจำนวนขนมทั้งหมดของอันนั้น ๆ -->
+                    <h6 class="mt-2 ml-2 pb-2"> [ขนม] ขายได้ในจำนวน </h6>
+                    <% var result = soldSnackAmount.reduce(function (r, a) { %>
+
+                        <% a.forEach(function (b, i) { %>
+
+                            <% r[i] = (r[i] || 0) + b; %>
+                            
+                        <% }); %>
+
+                        <% return r; %>
+
+                    <% }, []); %>
+
+                    <% var summaryAmountSold = [[]] %>
+
+                    <% for ( i = 0 ; i < soldSnackName.length ; i++ ) {%>
+                                    
+                         <%= soldSnackName[i] %> 
+
+                        <% if ( result[i] != ',' && !isNaN(result[i]) && result[i] != null ) { %>
+
+                            <%# var tempResult = result[i] %> 
+                            <% summaryAmountSold[i] = result[i] %> 
+
+                        <% } else { %>
+                        
+                                <% summaryAmountSold[i] = 0 %>
+
+                        <% } %>
+
+                        <% var x = i+1 %>
+                        <%= result[x]  %>
+                            
+                        <br>
+
+                    <% } %>
+                    <% result.shift()  %>
+                    <%= result  %> 
                 </div>
 
             </div>
@@ -340,37 +382,51 @@
 
             </div>
 
+            <!-- Piechart -->
+            <div class="row col-12 pt--5">
+
+                <!-- Graph Detail -->
+                <script type="text/javascript">
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+
+                        var data = google.visualization.arrayToDataTable([
+
+                            ['Snack', 'Amonun sold'],
+
+                            <%# for (let key in value.nowsnack) { %>
+
+                                // ['<%#= value.nowsnack[key].name %>', <%#= value.nowsnack[key].amount %> ],
+
+                                <% for ( i = 0 ; i < soldSnackName.length ; i++ ) {%>
+                                    
+                                    [
+
+                                        '<%= soldSnackName[i] %>',
+
+                                        <% var x = i+1 %>
+                                        <%= result[i]  %>
+
+                                    
+                                    ],
             
-            <div class="row col-12">
+                                <% } %>
+                            
+                            <%# } %>
+                        
+                        ]);
 
-            <!-- Graph Detail -->
-            <script type="text/javascript">
-            google.charts.load('current', { 'packages': ['corechart'] });
-            google.charts.setOnLoadCallback(drawChart);
+                        var options = {
+                            title: 'ร้อยละของขนมที่ขายได้'
+                        };
 
-            function drawChart() {
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-                var data = google.visualization.arrayToDataTable([
-                    ['Snack', 'Amonun sold'],
-            <% for (let key in value.nowsnack) { %>
-                    ['<%= value.nowsnack[key].name %>', <%= value.nowsnack[key].amount %> ],
-            <% } %>
-            // ['1',     2],
-            // ['2',      3],
-            // ['3',  4],
-            // ['4', 5],
-            // ['5',    3]
-          ]);
-
-                var options = {
-                    title: ''
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                chart.draw(data, options);
-            }
-        </script>
+                        chart.draw(data, options);
+                    }
+                </script>
 
                 <!-- Graph Display -->
                 <div class="middle" id="piechart" style="width: 900px; height: 500px;"></div>
@@ -382,10 +438,15 @@
 
                 <div class="col-6">
                     <div class="sum-head">
-                        <h4>ฺBest selling snack (ขนมขายดี)</h4>
+                        <h4>Best selling snack (ขนมขายดี)</h4>
                     </div>
                     <div class="sum-data">
-                        กูนี่ไง
+
+                        <% var bestSeller %>
+                        <% var tempBestSeller = Math.max(...result) %> 
+                        <% bestSeller = result.indexOf(tempBestSeller) %>
+                        <%= soldSnackName[bestSeller] %>
+
                     </div>
                 </div>
 
@@ -396,7 +457,10 @@
                     </div>
                     <div class="sum-data">
 
-                        ok
+                        <% var badSeller %>
+                        <% var tempbadSeller = Math.min(...result) %> 
+                        <% badSeller = result.indexOf(tempbadSeller) %>
+                        <%= soldSnackName[badSeller] %>
 
                     </div>
 
@@ -407,23 +471,23 @@
             <div class="TesT">
                 <%#= new Date().toJSON().slice(0,10).split('-2').join(',') %>
                     <%#= new Date().toISOString().slice(0,15).split('-2').join(',') %>
-                        <%= new Date().toString().split("G")[0]; %>
                             <br><br>
                             <%# var diff=Date.parse(new Date()); %>
                                 <%# var s1=new Date().toISOString().slice(0,10).split('-2').join(',') %>
                                     <%# var s2=new Date().toISOString().slice(0,10).split('-2').join(',') %>
-                                        <% var date1=new Date(); %>
-                                            <% var date2=new Date("Tue Mar 16 2021 21:33:52"); %>
+                                        <%# var date1=new Date(); %>
+                                            <%# var date2=new Date("Tue Mar 16 2021 21:33:52"); %>
 
                                                 <%# var s2=new Date().toJSON().slice(0,10).split('-').join(','); %>
-                                                    <%= date2 %>
-                                                        <% var diff=new Date(date1.getTime() - date2.getTime()); %>
+                                                    <%#= date2 %>
+                                                        <%# var diff=new Date(date1.getTime() - date2.getTime()); %>
 
                                                             <br><br><br>
-                                                            Difference (Year) <%= diff.getUTCFullYear() - 1970 %> <br>
-                                                                Difference (month) <%= diff.getUTCMonth() %>
+                                                            <!-- Difference (Year) <%#= diff.getUTCFullYear() - 1970 %> <br>
+                                                                Difference (month) <%#= diff.getUTCMonth() %>
                                                                     <br>
-                                                                    Difference (day) <%= diff.getUTCDate() - 1 %>
+                                                                    Difference (day) <%#= diff.getUTCDate() - 1 %> -->
+                <%= new Date().toString().split("G")[0]; %>
 
 
             </div>
