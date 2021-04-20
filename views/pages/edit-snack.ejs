@@ -25,7 +25,17 @@
 
                                     <label class="product-detail_2" for="Price">ราคา <%= value[key].price %> บาท</label>
                                     <br>
-                                    จำนวนคงเหลือ <%= value[key].amount %> ชิ้น <br>
+
+                                    <% if ( value[key].amount == 0 ) { %>
+                                        <p style="color: red; ">
+                                            <b>จำนวนคงเหลือ <%= value[key].amount %> ชิ้น</b> 
+                                        </p> 
+                                    <% } else { %>
+                                            <p style="color: black;">
+                                                จำนวนคงเหลือ <%= value[key].amount %> ชิ้น
+                                            </p>
+                                        <% } %> 
+
                                         <form action="/edit/photosubmit" method="POST" enctype="multipart/form-data">
                                             <!-- <button style='margin-top: 10px; font-size:14px; color:gray' 
                                                 onclick="document.getElementById('inpFile').click(); return false;">
@@ -33,8 +43,13 @@
                                             <input type="text" name="snackname" id="" style="display: none;" value="<%= value[key].name %>">
                                             <input type="text" name="id" id="" style="display: none;" value="<%= value[key].id %>">
 
-                                            <input type="file" name="image" id="snack-img">
-                                            <button type="submit" class="btn btn-primary">ส่ง</button>
+                                            <button style='margin-top: 10px; font-size:14px; color:gray'
+                                            onclick="document.getElementById('snack-img<%= x %>').click(); return false;">
+                                            <i class='fas fa-image'> แก้ไขรูปภาพ </i></button>
+
+                                            <input type="file" name="image" id="snack-img<%= x %>" style="display: none;">
+                                            
+                                            <button type="submit" class="btn btn-primary mt-1">ส่ง</button>
                                         </form>
                                         <!-- <input type="file" name="Image" id="snack-img" type="submit"> -->
                                 </div>
