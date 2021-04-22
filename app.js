@@ -9,6 +9,7 @@ const firebase = require('firebase');
 const { getHomePage } = require('./routes/index');
 const { editProducts, editSnack, editPhoto } = require('./routes/edit-products');
 const { Overviews } = require('./routes/overviews');
+const { login } = require('./routes/login');
 
 //const PORT = process.env.PORT || 5000
 const port = 5000;
@@ -36,9 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileupload());
 
 //app.get('/', (req, res) => res.render('pages/index'));
-app.get('/', getHomePage);
+app.get('/home', getHomePage);
 app.get('/edit', editProducts);
 app.get('/overview', Overviews);
+
+app.get( '/', login );
 
 
 app.post('/edit/submit', editSnack);
